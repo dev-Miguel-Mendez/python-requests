@@ -2,18 +2,15 @@ import requests
 import typing as t
 import json
 
-base_url: str = "https://pokeapi.co/api/v2/pokemon/"
+url: str = "https://pokeapi.co/api/v2/pokemon/pikachu"
 
 
 
 
-def get_pokemon_info(pokemon_name: str) -> t.Dict[t.Any, t.Any]:
+def get_pokemon_info() -> t.Dict[t.Any, t.Any]:
 
-    full_url: str = base_url + pokemon_name 
 
-    print(full_url)
-
-    response: requests.Response = requests.get(full_url)
+    response: requests.Response = requests.get(url)
 
     if(response.status_code == 200):
         pokemon_data = response.json()
@@ -26,7 +23,7 @@ def get_pokemon_info(pokemon_name: str) -> t.Dict[t.Any, t.Any]:
 
 
 
-info = get_pokemon_info('pikachu') #$ This is a Dict (t.Dict[t.Any, t.Any])
+info = get_pokemon_info() #$ This is a Dict (t.Dict[t.Any, t.Any])
 
 print(info['name']) #$ This is a string
 
